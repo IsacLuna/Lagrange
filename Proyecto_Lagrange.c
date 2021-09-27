@@ -69,6 +69,7 @@ void ingDatos(int numPO, float paresX[], float paresY[]){
         while(1){
             printf("\tIngrese el par ordenado x = ");
             int aux = scanf("%f", &parO);
+            fflush(stdin);
             if(aux != 0)
                 break;
             printf("\t\tIngrese un n%cmero.\n", 163);
@@ -92,6 +93,7 @@ void lagrangemetod(int numPO, float paresX[], float paresY[], float numSolPar[])
     while(1){
         printf("\tIngrese el valor de x para encontrar su y: ");
         int aux = scanf("%f", &x);
+        fflush(stdin);
         if(aux != 0)
             break;
         printf("\t\tIngrese un n%cmero.\n", 163);
