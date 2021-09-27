@@ -8,39 +8,40 @@ void lagrangemetod(int numPO, float paresX[], float paresY[], float numSolPar[])
 
 int main(int argc, char const *argv[]){
     int numPO = 0;
-    int val = 0;
+    int val = 0, i;
     do{
         printf("\t\t\t\t----------------INTERPOLACI%cN DE LAGRANGE----------------\n\n", 224);
         printf("\t\tEste programa nos ayudar%c a interpolar.\n", 160);
         printf("\n\t\tReglas:");
         printf("\n\t\tPara llevar a cabo la ejecuci%cn del programa, se debe tener en cuenta lo siguiente:", 162);
         printf("\n\t\t\t1.- Se deber%c de ingresar solo n%cmeros.", 160, 163);
-		printf("\n\t\t\t2.- El n%cmero de pares ingresados tiene que ser mayor a 0.\n\n\n", 163);
-        
+		printf("\n\t\t\t2.- El n%cmero de pares ingresados tiene que ser mayor o igual a 2.\n\n\n", 163);
         while(1){
-        printf("Ingrese el n%cmero de pares ordenados.\n", 163);
-        fflush(stdin);
-        int aux = scanf("%d", &numPO);
-        if(aux != 0 && numPO > 0)
-            break;
-        if(aux == 0)
-            printf("\t\tIngrese un n%cmero.\n", 163);
-        else  
-            printf("\t\tIngrese un n%cmero mayor a 0.\n", 163);
+	        printf("\tIngrese el n%cmero de pares ordenados: ", 163);
+	        fflush(stdin);
+	        int aux = scanf("%d", &numPO);
+	        if(aux != 0 && numPO > 0)
+	            break;
+	        if(aux == 0)
+	            printf("\n\t\tIngrese un n%cmero.\n", 163);
+	        else  
+	            printf("\t\tIngrese un n%cmero mayor a 0.\n", 163);
         }
         float paresOX[numPO];
         float paresOY[numPO];
         ingDatos(numPO, paresOX, paresOY);
 
-        for(int i = 0; i < numPO; i++){
-            printf("\t\tPar Ordenado %d\n", i + 1);
-            printf("X = %4.2f\t\tY = %4.2f\n", paresOX[i], paresOY[i]);
+
+        for(i = 0; i < numPO; i++){
+            printf("\n\t\tPar Ordenado %d\t\t", i + 1);
+	        printf("X = %4.2f\t\tY = %4.2f", paresOX[i], paresOY[i]);
         }
+        printf("\n\n");
         float numSolPar[numPO];
 
         lagrangemetod(numPO, paresOX, paresOY, numSolPar);
         float sumaResultante = 0;
-        for(int i = 0; i < numPO; i ++){
+        for(i = 0; i < numPO; i ++){
             printf("\t\t%d\t\t\t%4.5f\n", i + 1, numSolPar[i]);
             sumaResultante = sumaResultante + numSolPar[i];
         }
@@ -58,13 +59,13 @@ int main(int argc, char const *argv[]){
         }
         system("cls");
     }while(val == 1);
-
     return 0;
 }
 
 void ingDatos(int numPO, float paresX[], float paresY[]){
     float parO;
-    for(int i = 0; i < numPO; i++){
+    int i;
+    for(i = 0; i < numPO; i++){
         printf("\n\t\t\tPAR ORDENADO N%cMERO %d\n", 233, i + 1);
         while(1){
             printf("\tIngrese el par ordenado x = ");
@@ -90,6 +91,7 @@ void ingDatos(int numPO, float paresX[], float paresY[]){
 
 void lagrangemetod(int numPO, float paresX[], float paresY[], float numSolPar[]){
     float x = 0;
+    int i, j;
     while(1){
         printf("\tIngrese el valor de x para encontrar su y: ");
         int aux = scanf("%f", &x);
@@ -99,9 +101,9 @@ void lagrangemetod(int numPO, float paresX[], float paresY[], float numSolPar[])
         printf("\t\tIngrese un n%cmero.\n", 163);
     }
 
-    for(int i = 0; i < numPO; i++){
+    for(i = 0; i < numPO; i++){
         float aux = 0, aux1 = 0, aux3 = 1, aux2 = 1; 
-        for(int j = 0; j < numPO; j++){
+        for(j = 0; j < numPO; j++){
             
             if(i != j){
                 aux = x -paresX[j];
