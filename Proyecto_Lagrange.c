@@ -20,12 +20,12 @@ int main(int argc, char const *argv[]){
 	        printf("\tIngrese el n%cmero de pares ordenados: ", 163);
 	        fflush(stdin);
 	        int aux = scanf("%d", &numPO);
-	        if(aux != 0 && numPO > 0)
+	        if(aux != 0 && numPO > 1)
 	            break;
 	        if(aux == 0)
 	            printf("\n\t\tIngrese un n%cmero.\n", 163);
 	        else  
-	            printf("\t\tIngrese un n%cmero mayor a 0.\n", 163);
+	            printf("\t\tIngrese un n%cmero mayor o igual a 2.\n", 163);
         }
         float paresOX[numPO];
         float paresOY[numPO];
@@ -49,7 +49,7 @@ int main(int argc, char const *argv[]){
         printf("\t\t          Y(x)=         %4.5f\n", sumaResultante);
 
         while(1){
-            printf("\n\t%cDesea ingresar otra ecuaci%cn%c\n", 168, 162, 63);
+            printf("\n\t%cDesea salir del programa%c\n", 168, 63);
             printf("\t\tDigite 1 para S%c.\n\t\tDigite 2 para No.\n\t\t-- ", 161);
             fflush(stdin);
             int aux1 = scanf("%d", &val);
@@ -58,7 +58,7 @@ int main(int argc, char const *argv[]){
             printf("\t\t\tIngrese un n%cmero correcto.\n", 163);
         }
         system("cls");
-    }while(val == 1);
+    }while(val == 2);
     return 0;
 }
 
